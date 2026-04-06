@@ -2,9 +2,10 @@ pipeline {
     agent any
 
     stages {
+
         stage('Checkout') {
             steps {
-                git 'https://github.com/Suhani0903/SeleniumGridProject.git'
+                git branch: 'main', url: 'https://github.com/Suhani0903/SeleniumGridProject.git'
             }
         }
 
@@ -22,11 +23,7 @@ pipeline {
 
         stage('Report') {
             steps {
-                publishHTML([
-                    reportDir: 'reports',
-                    reportFiles: 'extent-report.html',
-                    reportName: 'Test Report'
-                ])
+                echo 'Test execution completed'
             }
         }
     }
