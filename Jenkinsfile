@@ -23,7 +23,11 @@ pipeline {
 
         stage('Report') {
             steps {
-                echo 'Test execution completed'
+                publishHTML([
+                    reportName: 'Extent Report',
+                    reportDir: 'target',                 // dir that contains the HTML file
+                    reportFiles: 'ExtentReport.html'     
+                ])
             }
         }
     }
